@@ -1,3 +1,4 @@
+import _ from "lodash"; // added to simulate a large project
 import Api from "api";
 
 import Nav from "./nav";
