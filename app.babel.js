@@ -57,6 +57,18 @@ app.set("views", path.join(__dirname, `${viewsDir}`));
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 
+// preload webfonts
+app.use("/fonts", (req, res, next) => {
+  res.set(
+    "Link",
+    `${req.protocol +
+      "://" +
+      req.get("host") +
+      req.originalUrl}; rel=preload; as=style`
+  );
+  next();
+});
+
 // setup server for static assets
 app.use(
   "/",
