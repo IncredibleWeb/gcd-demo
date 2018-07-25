@@ -13,6 +13,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+    .BundleAnalyzerPlugin;
 
 const node = {
     name: "node",
@@ -53,6 +55,7 @@ const node = {
                   })
               ]
     ),
+
     module: {
         loaders: [
             {
@@ -71,9 +74,7 @@ const node = {
                 loader: "babel-loader",
                 query: {
                     presets: ["env"],
-                    plugins: [
-                        "transform-object-rest-spread"
-                    ]
+                    plugins: ["transform-object-rest-spread"]
                 }
             }
         ]
@@ -133,7 +134,9 @@ const web = {
             }
         ]),
         new StyleLintPlugin()
-    ].concat(isDev ? [] : [new webpack.optimize.UglifyJsPlugin()]),
+    ]
+        .concat(isDev ? [] : [new webpack.optimize.UglifyJsPlugin()])
+        .concat(isDev ? [new BundleAnalyzerPlugin()] : []),
     module: {
         loaders: [
             {
@@ -152,9 +155,7 @@ const web = {
                 loader: "babel-loader",
                 query: {
                     presets: ["env"],
-                    plugins: [
-                        "transform-object-rest-spread"
-                    ]
+                    plugins: ["transform-object-rest-spread"]
                 }
             },
             {
@@ -193,7 +194,7 @@ const web = {
                     "file-loader?hash=sha512&digest=hex&name=[hash].[ext]",
                     "image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false"
                 ]
-            },
+            }
         ]
     },
     resolve: {
