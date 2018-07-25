@@ -93,6 +93,7 @@ const web = {
     context: path.join(__dirname, "src"),
     entry: {
         "index.js": ["./js/index.js"],
+        "other-module.js": ["./js/other-module.js"],
         "style.css": "./scss/style.scss",
         "inline.css": "./scss/inline.scss"
     },
@@ -101,6 +102,11 @@ const web = {
         filename: "[name]"
     },
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "common",
+            filename: "common.js",
+            minChunks: 2
+        }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
