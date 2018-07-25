@@ -64,7 +64,7 @@ app.use("/fonts", (req, res, next) => {
     `${req.protocol +
       "://" +
       req.get("host") +
-      req.originalUrl}; rel=preload; as=style`
+      req.originalUrl}; rel=preload; as=font`
   );
   next();
 });
