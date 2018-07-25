@@ -92,7 +92,8 @@ const web = {
     context: path.join(__dirname, "src"),
     entry: {
         "index.js": ["./js/index.js"],
-        "style.css": "./scss/style.scss"
+        "style.css": "./scss/style.scss",
+        "inline.css": "./scss/inline.scss"
     },
     output: {
         path: path.join(__dirname, outputFolder),

@@ -1,0 +1,33 @@
+{{#if asyncStyles}}
+<script>
+  var asyncStyles = [
+    {{#each asyncStyles}}
+    '{{{this}}}',
+    {{~/each}}
+  ];
+
+  // Asynchronously load CSS with a Request Animation Frame
+  // For older browser support see this for a simple shim
+  // http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+  window.requestAnimationFrame(function() {
+    var elementToInsertLinkBefore = document.getElementsByTagName('script')[0];
+
+    for (var i = 0; i < asyncStyles.length; i++) {
+      var linkElement = document.createElement('link');
+      linkElement.rel = 'stylesheet';
+      linkElement.media = 'all';
+      linkElement.href = asyncStyles[i];
+
+
+      elementToInsertLinkBefore.parentNode.insertBefore(linkElement, elementToInsertLinkBefore);
+    }
+  });
+</script>
+
+<!-- In case the browser has JS disabled -->
+<noscript>
+  {{#each asyncStyles}}
+  <link href="{{this}}" rel="stylesheet" property="stylesheet" media="all">
+  {{~/each}}
+</noscript>
+{{~/if}}

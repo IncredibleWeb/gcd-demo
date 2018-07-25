@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#393b5d" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="icon" sizes="144x144" href="/img/144.png" />
-    <link href="style.css" rel="stylesheet" />
+    <style>{{{ inlineStyles }}}</style>
 </head>
 
 <body>
@@ -20,6 +20,8 @@
     </main>
 
     {{> modal-overlay }}
+
+    {{> async-css }}
 
     <script src="/index.js" async></script>
 </body>
