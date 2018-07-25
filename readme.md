@@ -12,7 +12,6 @@ The source code is organised in multiple branches:
 - `inline-css` adds inline CSS and loads remaining CSS asynchronously
 - `preload` adds web font preloading
 - `codesplitting` adds code splitting using the `CommonsChunkPlugin` & `WebPackBundleAnalyzer`
-- `pwa` adds service workers caching
 
 ## Technology
 Built using JavaScript (ES2015), running on ExpressJS on the server-side and vanilla JavaScript on the client-side.
