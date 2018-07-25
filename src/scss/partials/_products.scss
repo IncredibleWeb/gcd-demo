@@ -1,0 +1,24 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+
+  .item {
+    width: 46%;
+    margin-bottom: 1em;
+
+    .thumb {
+      display: block;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .title {
+      display: block;
+      text-align: center;
+      width: 100%;
+      font-weight: 600;
+    }
+  }
+}
